@@ -14,7 +14,7 @@ function createPlayer(userClass, user)
 			const $life = document.createElement('div');
 			$life.classList.add('life');
 			//$life.innerText = user.hp;
-			$life.style.width = user.hp;
+			$life.style.width = user.hp + '%';
 			$progressbar.appendChild($life);
 				
 			const $name = document.createElement('div');
