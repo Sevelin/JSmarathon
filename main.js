@@ -1,4 +1,4 @@
 
 
-createPlayer('player1', 'Scorpion', '50');
-createPlayer('player2', 'Sonya', '80');
+createPlayer('player1', player1);
+createPlayer('player2', player2);

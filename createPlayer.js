@@ -1,4 +1,4 @@
-function createPlayer(userClass, userNmae, userHP)
+function createPlayer(userClass, user)
 {
 	const $player1 = document.createElement('div');
 	$player1.classList.add(userClass);
@@ -9,12 +9,12 @@ function createPlayer(userClass, userNmae, userHP)
 		
 			const $life = document.createElement('div');
 			$life.classList.add('life');
-			//$life.innerText = userHP;
+			$life.innerText = user.hp;
 			$progressbar.appendChild($life);
 			
 			const $name = document.createElement('div');
 			$name.classList.add('name');
-			$name.innerText = userNmae;
+			$name.innerText = user.name;
 			$progressbar.appendChild($name);
 
 	const $character = document.createElement('div');
@@ -22,7 +22,7 @@ function createPlayer(userClass, userNmae, userHP)
 	$player1.appendChild($character);
 		
 		const $img = document.createElement('img');
-		$img.src = 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif';
+		$img.src = user.img;
 		$character.appendChild($img);
 	
 	
