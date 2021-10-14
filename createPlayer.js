@@ -9,7 +9,7 @@ function createPlayer(userClass, user)
 		
 			const $life = document.createElement('div');
 			$life.classList.add('life');
-			$life.innerText = user.hp;
+			//$life.innerText = user.hp;
 			$progressbar.appendChild($life);
 			
 			const $name = document.createElement('div');
