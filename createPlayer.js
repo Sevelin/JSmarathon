@@ -4,7 +4,6 @@
 
 
 const $arenas = document.querySelector('.arenas');	// находим нужный класс 
-const $btn = document.querySelector('.button');		// находим нужную кнопку
 
 
 /**
@@ -50,53 +49,4 @@ function createElements(tag, className)
 	}
 	
 	return $tag;
-}
-
-/**
-* Отслеживаем нажатие на кнопку
-*/
-function kickPlayer()
-{
-	console.log( randomNum(10) );
-	
-	changeHp(player1);
-	changeHp(player2);
-	
-}
-
-/**
-* Вычитание жизни у выбранного игрока
-*/
-function changeHp(player)
-{
-	const $playerLife = document.querySelector('.player' + player.player + ' .life');
-	player.hp -= randomNum(10);
-	$playerLife.style.width = player.hp + '%';
-	
-	// 
-	if(player.hp < 0 )
-	{
-		$arenas.appendChild(playerLose(player.name));
-	}
-}
-
-/**
-* Выводим надпись проигравшему игроку
-*/
-function playerLose(name)
-{
-	const $loseTitle = createElements('div', 'loseTitle');
-	$loseTitle.innerText = name + ' lose';
-	
-	return $loseTitle;
-}
-
-/**
-* Получаем рандомное число
-* - В параметре указываем до какого числа будем округлять
-*/
-function randomNum(num)
-{
-	let finalNum = Math.ceil( Math.random() * num );
-	return finalNum;
 }
