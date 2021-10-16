@@ -23,7 +23,8 @@ function kickPlayer()
 function changeHp(player)
 {
 	const $playerLife = document.querySelector('.player' + player.player + ' .life');
-	player.hp -= randomNum(10);
+	player.hp -= randomNum(20);
+	
 	if(player.hp <= 0 )
 	{
 		player.hp = 0;
