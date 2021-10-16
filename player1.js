@@ -4,7 +4,8 @@
 
 const player1 = {
 	name: 'Scorpion',
-	hp: 80,
+	player: 1,
+	hp: 100,
 	img: 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif',
 	weapon: 'sword',
 	attack: function(){
