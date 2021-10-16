@@ -3,11 +3,12 @@
 * Главный файл
 */
 
-//находим нужный класс 
-const $arenas = document.querySelector('.arenas');
+
 
 // отрисовываем выбранных персонажей
-// 1-й параметр название класса
-// 2-й параметр объект с персонажем
+// параметр объект с персонажем
 $arenas.appendChild( createPlayer(player1) );
 $arenas.appendChild( createPlayer(player2) );
+
+// отслеживаем клик по кнопуке
+$btn.addEventListener('click', kickPlayer);
