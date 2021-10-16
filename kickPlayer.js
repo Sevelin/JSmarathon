@@ -12,8 +12,12 @@ const $btn = document.querySelector('.button');		// находим нужную 
 function kickPlayer()
 {
 	
-	changeHp(player1);
-	changeHp(player2);
+	let p1 = changeHp(player1);
+	let p2 = changeHp(player2);
+	
+	//console.log('p1 - ' + p1.hp + ' || p2 - ' + p2.hp );
+	
+	viewText(p1, p2);
 	
 }
 
@@ -23,20 +27,24 @@ function kickPlayer()
 function changeHp(player)
 {
 	const $playerLife = document.querySelector('.player' + player.player + ' .life');
-	player.hp -= randomNum(20);
 	
-	if(player.hp <= 0 )
+	let rNum = randomNum(20);
+	
+	if((player.hp - rNum) <= 0 )
 	{
 		player.hp = 0;
-		$arenas.appendChild(playerLose(player.name));
+		//$arenas.appendChild(playerLose(player.name));
+	}else{
+		player.hp -= randomNum(20);
 	}
 	
-	console.log(player.name + '  - ' +player.hp);
 	$playerLife.style.width = player.hp + '%';
+	
+	return player;
 }
 
 /**
-* Выводим надпись проигравшему игроку
+* Создаём надпись проигравшему игроку
 */
 function playerLose(name)
 {
@@ -44,6 +52,45 @@ function playerLose(name)
 	$loseTitle.innerText = name + ' lose';
 	
 	return $loseTitle;
+}
+
+/**
+* Создаём надпись победившего игрока
+*/
+function playerWin(name)
+{
+	const $winTitle = createElements('div', 'loseTitle');
+	if(name)
+	{
+		$winTitle.innerText = name + ' win';
+	}else{
+		$winTitle.innerText = 'DRAW';
+	}
+	
+	return $winTitle;
+}
+
+/**
+* Выводим мообщение о победе!
+*/
+function viewText(p1, p2)
+{
+	if(p1.hp == 0 && p2.hp == 0)
+	{
+		$arenas.appendChild(playerWin());
+		$btn.disabled = true;
+		$btn.style.display = 'none';
+	}else if(p1.hp == 0)
+	{
+		$arenas.appendChild(playerWin(p2.name));
+		$btn.disabled = true;
+		$btn.style.display = 'none';
+	}else if(p2.hp == 0)
+	{
+		$arenas.appendChild(playerWin(p1.name));
+		$btn.disabled = true;
+		$btn.style.display = 'none';
+	}
 }
 
 /**
