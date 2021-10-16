@@ -2,36 +2,43 @@
 * Метод для добавления персонажей на арену
 */
 
-function createPlayer(userClass, user)
+//const $arenas = document.querySelector('.arenas');
+
+function createPlayer(user)
 {
-	const $player1 = document.createElement('div');	// Создаём элемент DIV
-	$player1.classList.add(userClass);	//Создаём класс в выбранном DIV элементе
+	const $player = createElements('div', 'player'+user.player);
 
-		const $progressbar = document.createElement('div');	// Создаём элемент DIV
-		$progressbar.classList.add('progressbar');			// Создаём класс в выбранном DIV элементе
-		$player1.appendChild($progressbar);					// Указываем родительский класс в котором будет находится только что созданный элемент
+		const $progressbar = createElements('div', 'progressbar');
+		$player.appendChild($progressbar);					// Указываем родительский класс в котором будет находится только что созданный элемент
 		
-			const $life = document.createElement('div');
-			$life.classList.add('life');
-			//$life.innerText = user.hp;
-			$life.style.width = user.hp + '%';
+			const $life = createElements('div', 'life');
 			$progressbar.appendChild($life);
+			$life.style.width = user.hp + '%';
 				
-			const $name = document.createElement('div');
-			$name.classList.add('name');
-			$name.innerText = user.name;
+			const $name = createElements('div', 'name');
 			$progressbar.appendChild($name);
+			$name.innerText = user.name;
 
-		const $character = document.createElement('div');
-		$character.classList.add('character');
-		$player1.appendChild($character);
+		const $character = createElements('div', 'character');
+		$player.appendChild($character);
 			
-			const $img = document.createElement('img');
+			const $img = createElements('img');
 			$img.src = user.img;
 			$character.appendChild($img);
 		
 
-	$arenas.appendChild($player1);
+	//$arenas.appendChild($player);
+	return $player;
 }
 
-const $arenas = document.querySelector('.arenas');
+function createElements(tag, className)
+{
+	const $tag = document.createElement(tag);	// Создаём элемент DIV
+	
+	if(className)
+	{
+		$tag.classList.add(className);				// Создаём класс в выбранном DIV элементе
+	}
+	
+	return $tag;
+}
