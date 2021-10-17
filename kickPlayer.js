@@ -35,7 +35,7 @@ function changeHp(player)
 		player.hp = 0;
 		//$arenas.appendChild(playerLose(player.name));
 	}else{
-		player.hp -= randomNum(20);
+		player.hp -= rNum;
 	}
 	
 	$playerLife.style.width = player.hp + '%';
